@@ -312,38 +312,6 @@ async def on_command_error(ctx, err):
         return
 
 
-@bot.event
-async def on_member_join(member):
-        if member.guild.id == 453472827526479874:
-            channel = member.guild.get_channel(485835315194363925)
-            await channel.edit(name=f'Member Count: {len(member.guild.members)}')
-
-
-@bot.event
-async def on_member_remove(member):
-    if member.guild.id == 453472827526479874:
-        channel = member.guild.get_channel(485835315194363925)
-        await channel.edit(name=f'Member Count: {len(member.guild.members)}')
-
-
-@bot.event
-async def on_message(msg):
-    if 'firebasic' in msg.content.lower():
-        await msg.channel.send('Yup I am here!!')
-    await bot.process_commands(msg)
-
-
-
-
-@bot.event
-async def on_ready():
-    bot.load_extension("fun")
-    bot.load_extension("search")
-    bot.load_extension('ExampleRepl')
-    options = ('help via f!help', 'to !👑!Fire Feathers!👑!#2636', f'on {len(bot.guilds)} servers')
-    while True:
-        await bot.change_presence(activity=discord.Streaming(name=random.choice(options), url='https://www.twitch.tv/cohhcarnage'))
-        await asyncio.sleep(10)
 
 
 bot.add_cog(BAdmin())
